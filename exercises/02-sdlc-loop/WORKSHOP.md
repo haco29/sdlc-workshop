@@ -4,7 +4,7 @@ Today you'll add one small feature to this poll app. The feature is the excuse. 
 to **run the whole loop once, for real**, and to read what every step produces:
 
 ```text
-/spec  →  /plan  →  /build  →  /test  →  /review  →  /code-simplify  →  /pr
+/sdlc:spec  →  /sdlc:plan  →  /sdlc:build  →  /sdlc:test  →  /sdlc:review  →  /sdlc:code-simplify  →  /sdlc:pr
 ```
 
 It doesn't matter whether you're backend, frontend or QA: everyone runs the same loop on
@@ -17,7 +17,7 @@ the same app.
 
 - Git, uv and Claude Code, set up as in [SETUP.md](../../SETUP.md). uv brings its own
   Python, so you don't need to install it.
-- No GitHub account. `/pr` writes the PR description to a file instead. If you already use
+- No GitHub account. `/sdlc:pr` writes the PR description to a file instead. If you already use
   GitHub and want a real pull request, see "Optional: a real pull request" below.
 
 ## Step 1: Open the app
@@ -46,7 +46,7 @@ template instead of the plain clone, so your PR lands in your repo:
 gh repo create my-sdlc-workshop --template haco29/sdlc-workshop --private --clone
 ```
 
-Then work in `my-sdlc-workshop/exercises/02-sdlc-loop`. In a plain clone of this repo, `/pr`
+Then work in `my-sdlc-workshop/exercises/02-sdlc-loop`. In a plain clone of this repo, `/sdlc:pr`
 writes `pr.md` instead, because you can't push to it.
 
 ## Step 2: Install the SDLC kit (once)
@@ -55,11 +55,12 @@ In the Claude Code you just started:
 
 ```text
 /plugin marketplace add haco29/agentic-sdlc
-/plugin install agentic-sdlc@haco29
+/plugin install sdlc@haco29
 ```
 
-Restart Claude Code and type `/`: you should see `/spec`, `/plan`, `/build`, `/test`,
-`/review`, `/code-simplify` and `/pr`.
+Restart Claude Code and type `/sdlc`: you should see `/sdlc:spec`, `/sdlc:plan`, `/sdlc:build`,
+`/sdlc:test`, `/sdlc:review`, `/sdlc:code-simplify` and `/sdlc:pr`. They carry the plugin's
+name so they don't clash with Claude Code's own `/plan` and `/review`.
 
 ## Step 3: Make a feature branch
 
@@ -83,13 +84,13 @@ Read what each command produces before you run the next one.
 
 | Command | Produces | Watch for |
 |---|---|---|
-| `/spec <feature>` | `spec.md` | It grills you, one question at a time. Answering well is the most valuable part of the day. |
-| `/plan` | `plan.md`, `todo.md` | Are the tasks small? Does each one name the test that proves it? |
-| `/build` | One task, one commit | Logic in `poll/core.py`. The failing test comes first. Run it once per task, or `/build auto` for all of them. |
-| `/test` | Tests for the gaps | Every success criterion and edge case in the spec should map to a test. |
-| `/review` | `review.md` | A reviewer agent with fresh eyes. Read every finding, and decide fix or won't-fix. |
-| `/code-simplify` | A `refactor:` commit | Tests stay green the whole time. "Nothing to simplify" is a fine answer. |
-| `/pr` | A PR, or `pr.md` | It checks six gates first. A failing gate means a draft, not a ready PR. |
+| `/sdlc:spec <feature>` | `spec.md` | It grills you, one question at a time. Answering well is the most valuable part of the day. |
+| `/sdlc:plan` | `plan.md`, `todo.md` | Are the tasks small? Does each one name the test that proves it? |
+| `/sdlc:build` | One task, one commit | Logic in `poll/core.py`. The failing test comes first. Run it once per task, or `/sdlc:build auto` for all of them. |
+| `/sdlc:test` | Tests for the gaps | Every success criterion and edge case in the spec should map to a test. |
+| `/sdlc:review` | `review.md` | A reviewer agent with fresh eyes. Read every finding, and decide fix or won't-fix. |
+| `/sdlc:code-simplify` | A `refactor:` commit | Tests stay green the whole time. "Nothing to simplify" is a fine answer. |
+| `/sdlc:pr` | A PR, or `pr.md` | It checks six gates first. A failing gate means a draft, not a ready PR. |
 
 ## Step 6: Score yourself
 
@@ -103,8 +104,8 @@ with the three things to do differently next time. Not how clever the feature is
 ## Step 7: Debrief
 
 - What did `/sdlc-score` take points off for?
-- Where did the `/spec` grilling change what you were going to build?
-- Which `/review` axis found the most?
+- Where did the `/sdlc:spec` grilling change what you were going to build?
+- Which `/sdlc:review` axis found the most?
 - Same feature, different roles: how did your specs and tests differ?
 - What would you change in the process itself?
 

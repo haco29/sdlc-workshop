@@ -1,7 +1,7 @@
 # Feature menu
 
 Pick **one** feature and take it through the whole loop. Each one is small on purpose and
-**deliberately vague**, so `/spec` has real questions to ask you and `/plan` has real
+**deliberately vague**, so `/sdlc:spec` has real questions to ask you and `/sdlc:plan` has real
 decisions to make. Aim for one or two files of change.
 
 > Everyone building the same thing? Pick **#1**.
@@ -12,7 +12,7 @@ decisions to make. Aim for one or two files of change.
 
 Show each option's share of the vote, like `42%`, and mark the leader with 🏆.
 
-- **Questions to settle in `/spec`:** How do you round, and must the shares add up to 100%?
+- **Questions to settle in `/sdlc:spec`:** How do you round, and must the shares add up to 100%?
   What does a poll with **zero votes** show? What if two options **tie** for the lead? In
   what order are the results listed?
 - **Tests worth writing first:** zero votes, an exact tie, rounding that doesn't add up.

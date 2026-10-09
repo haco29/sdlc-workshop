@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Start the workshop
 
-Get the participant from a fresh clone to their first `/spec` in about ten minutes. Be
+Get the participant from a fresh clone to their first `/sdlc:spec` in about ten minutes. Be
 brief and friendly. Do one step at a time, and fix problems before moving on. Never commit
 or push in this skill.
 
@@ -21,16 +21,16 @@ Everything in this exercise runs from `exercises/02-sdlc-loop`. Check that `app.
 Check whether the agentic-sdlc commands are installed:
 
 ```bash
-claude plugin list 2>/dev/null | grep -i agentic-sdlc \
+claude plugin list 2>/dev/null | grep -E '(^|[^-[:alnum:]])sdlc@haco29' \
   || ls ~/.claude/commands/spec.md ~/.cursor/commands/spec.md 2>/dev/null
 ```
 
 - Found: say so and move on.
 - Not found: show the install commands from WORKSHOP.md step 2. Offer to run
   `claude plugin marketplace add haco29/agentic-sdlc` and
-  `claude plugin install agentic-sdlc@haco29` for them, and only run them on a yes. Remind
-  them to restart Claude Code afterwards and to check that `/spec` shows up when they type
-  `/`.
+  `claude plugin install sdlc@haco29` for them, and only run them on a yes. Remind
+  them to restart Claude Code afterwards and to check that `/sdlc:spec` shows up when they type
+  `/sdlc`.
 
 ## 2. Git
 
@@ -38,11 +38,11 @@ claude plugin list 2>/dev/null | grep -i agentic-sdlc \
 git config user.name; git config user.email
 ```
 
-Both must print something, or `/build` can't commit. If either is empty, ask for the name
+Both must print something, or `/sdlc:build` can't commit. If either is empty, ask for the name
 and email they want on their commits, and run `git config --global user.name "…"` and
 `git config --global user.email "…"` only after they answer.
 
-Working locally is the default: no GitHub account is needed, and `/pr` writes `pr.md`. Only
+Working locally is the default: no GitHub account is needed, and `/sdlc:pr` writes `pr.md`. Only
 if they already use GitHub, have `gh`, and want a real PR, point them to "Optional: a real
 pull request" in WORKSHOP.md.
 
@@ -74,7 +74,7 @@ git checkout main && git checkout -b feat/<short-name>
 Tell them:
 
 - Run `uv run streamlit run app.py` once, to see the app they're changing.
-- Their first command is `/spec <the feature in a sentence>`, and it will grill them. The
+- Their first command is `/sdlc:spec <the feature in a sentence>`, and it will grill them. The
   questions are the point.
 - The loop and what to watch for at each step are in WORKSHOP.md step 5.
 - `/sdlc-score` at the end grades how they worked.

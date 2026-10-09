@@ -5,7 +5,7 @@ room, backend, frontend and QA alike, can practice the same agentic SDLC end to 
 adding one small feature:
 
 ```text
-/spec  →  /plan  →  /build  →  /test  →  /review  →  /code-simplify  →  /pr
+/sdlc:spec  →  /sdlc:plan  →  /sdlc:build  →  /sdlc:test  →  /sdlc:review  →  /sdlc:code-simplify  →  /sdlc:pr
 ```
 
 > **Running the workshop?** Read [WORKSHOP.md](WORKSHOP.md), or start Claude Code in this
