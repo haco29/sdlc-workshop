@@ -27,12 +27,28 @@ fine. Or, in PowerShell:
 winget install --id Git.Git -e
 ```
 
+No administrator rights? Use the portable Git. On the same download page, get **Git for
+Windows/x64 Portable** and run it. When it asks where to install, enter
+`C:\Users\<you>\PortableGit`, with your Windows user name. Then put Git on your PATH and
+tell Claude Code where Git Bash is:
+
+```powershell
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$HOME\PortableGit\cmd", "User")
+setx CLAUDE_CODE_GIT_BASH_PATH "$HOME\PortableGit\bin\bash.exe"
+```
+
 Check it: `git --version` prints a version number.
 
 **2. uv.**
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+If your laptop blocks that script, use WinGet instead:
+
+```powershell
+winget install --id=astral-sh.uv -e
 ```
 
 Check it: `uv --version` prints a version number.
@@ -42,6 +58,15 @@ Check it: `uv --version` prints a version number.
 ```powershell
 irm https://claude.ai/install.ps1 | iex
 ```
+
+If your laptop blocks that script, use WinGet instead:
+
+```powershell
+winget install Anthropic.ClaudeCode
+```
+
+A WinGet install doesn't update itself, so run `winget upgrade Anthropic.ClaudeCode` now
+and then.
 
 Check it: `claude --version` prints a version number.
 
@@ -112,7 +137,7 @@ separately.
 | `'git'`, `'uv'` or `'claude'` is not recognized | Close the terminal and open a new one. Still failing? The install directory isn't on your PATH: see [Fix your PATH](https://code.claude.com/docs/en/troubleshoot-install). |
 | `The token '&&' is not a valid statement separator` | You're in an older PowerShell. Run the commands one at a time, as written above. |
 | `python3` opens the Microsoft Store | You don't need it. Use `uv run …` as shown, and uv brings its own Python. |
-| An installer asks for administrator rights you don't have | Ask IT before the workshop. Claude Code and uv install without admin rights; Git for Windows may need them. |
+| An installer asks for administrator rights you don't have | Claude Code and uv install without admin rights. For Git, use the portable Git from step 1, or ask IT before the workshop. |
 | A download fails or times out | You may be behind a proxy or firewall. Try another network, or ask IT. |
 | `Please tell me who you are` when committing | Run the two `git config` lines above. |
 
