@@ -11,14 +11,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-24.04, windows-latest]
         exercise: [01-agent-basics, 02-sdlc-loop]
         python-version: ["3.12"]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             exercise: 01-agent-basics
             python-version: "3.10"
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             exercise: 02-sdlc-loop
             python-version: "3.10"
     defaults:
@@ -27,8 +27,8 @@ jobs:
     env:
       UV_PYTHON: ${{ matrix.python-version }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install uv
