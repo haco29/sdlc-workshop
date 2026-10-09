@@ -1,0 +1,11 @@
+# Streamlit settings for this exercise. Run the app from this folder so they apply.
+
+[server]
+# Listen on this computer only, so Windows Firewall has no reason to ask.
+address = "localhost"
+# Don't ask for an email address the first time the app runs.
+showEmailPrompt = false
+
+[browser]
+# Don't send usage statistics to Streamlit.
+gatherUsageStats = false
