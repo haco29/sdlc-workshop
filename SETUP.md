@@ -123,15 +123,33 @@ cd ../02-sdlc-loop
 uv run pytest -q
 ```
 
-It should end with **17 passed**. Finally:
+It should end with **17 passed**.
+
+Now check that Claude Code can reach its model. You need the login details for Claude,
+which you get separately. Go back to the top of the repo, so Claude Code doesn't start
+inside an exercise, and start it:
 
 ```bash
-claude --version
+cd ../..
+claude
 ```
 
+The first time, it asks you to log in. Then type a one-line prompt, such as
+`Say hello in one sentence`, and press Enter. Any answer means it works. Type `/exit` to
+quit.
+
+Last, check that you can reach GitHub, where the SDLC kit comes from:
+
+```bash
+git ls-remote https://github.com/haco29/agentic-sdlc.git
+```
+
+It should print a few lines, each a long code and a name such as `HEAD`. If it fails,
+GitHub may be blocked on your network: see "GitHub is blocked" under
+[Company laptops and corporate networks](#company-laptops-and-corporate-networks).
+
 That's it. Don't start Claude Code in the exercise folders yet, and don't install anything
-else: the workshop takes you through the rest. You'll get login details for Claude
-separately.
+else: the workshop takes you through the rest.
 
 ## If something goes wrong
 
