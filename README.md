@@ -12,8 +12,9 @@ self-contained Python project in its own folder.
 
 - **Set up first: [SETUP.md](SETUP.md).** Git, uv and Claude Code, on Windows or macOS.
   uv brings its own Python, and you don't need a GitHub account.
-- **Start Claude Code inside the exercise's folder**, not at the repo root. Each exercise
-  carries its own instructions for the agent, and the root deliberately has none.
+- **Start Claude Code inside the exercise's folder**, not at the repo root. Exercise 2
+  carries its own instructions for the agent. Exercise 1 deliberately has none, and
+  neither does the root.
 
   ```bash
   cd exercises/01-agent-basics
