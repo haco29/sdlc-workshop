@@ -26,3 +26,8 @@ tests/                  pytest tests.
 ```
 
 Money is `Decimal`, rounded to the cent. The sample data is made up.
+
+## Workshop
+
+The prompts for this exercise are in [PROMPTS.md](../../PROMPTS.md) at the repo root. Open
+it in your browser or an editor, not in Claude Code.

@@ -23,8 +23,9 @@ self-contained Python project in its own folder.
 - **Exercise 1 runs without the SDLC kit.** If you're doing both, do exercise 1 first and
   install the kit only when exercise 2 tells you to.
 
-The steps for exercise 1 are on the facilitator's slides. Exercise 2 has its own
-playbook: [WORKSHOP.md](exercises/02-sdlc-loop/WORKSHOP.md).
+The prompts for exercise 1 are in [PROMPTS.md](PROMPTS.md). Open it in your browser or an
+editor, not in Claude Code. Exercise 2 has its own playbook:
+[WORKSHOP.md](exercises/02-sdlc-loop/WORKSHOP.md).
 
 ## Checks
 
