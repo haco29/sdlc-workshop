@@ -20,36 +20,21 @@ the same app.
 - No GitHub account. `/pr` writes the PR description to a file instead. If you already use
   GitHub and want a real pull request, see "Optional: a real pull request" below.
 
-## Step 1: Install the SDLC kit (once)
+## Step 1: Open the app
 
-In Claude Code:
-
-```text
-/plugin marketplace add haco29/agentic-sdlc
-/plugin install agentic-sdlc@haco29
-```
-
-Restart Claude Code and type `/`: you should see `/spec`, `/plan`, `/build`, `/test`,
-`/review`, `/code-simplify` and `/pr`.
-
-Using Cursor? Clone [agentic-sdlc](https://github.com/haco29/agentic-sdlc) and run
-`scripts/install.sh --cursor`, then restart Cursor.
-
-## Step 2: Open the app
-
-You cloned this repo during setup. Go to this exercise's folder:
+You cloned this repo during setup. Go to this exercise's folder and check the tests:
 
 ```bash
 cd sdlc-workshop/exercises/02-sdlc-loop
+uv run pytest -q              # green before you change anything
 ```
 
 Everything from here on runs in `exercises/02-sdlc-loop`, and that's where you start Claude
 Code: the agent's instructions for this app and `/start-workshop` live in this folder, and
-the loop writes its artifacts to `sdlc/<branch>/` here. Then, one at a time:
+the loop writes its artifacts to `sdlc/<branch>/` here.
 
 ```bash
-uv run pytest -q              # green before you change anything
-uv run streamlit run app.py   # create a poll, vote, get a feel for it
+claude
 ```
 
 ### Optional: a real pull request
@@ -61,13 +46,29 @@ template instead of the plain clone, so your PR lands in your repo:
 gh repo create my-sdlc-workshop --template haco29/sdlc-workshop --private --clone
 ```
 
-Then work in `my-sdlc-workshop/exercises/02-sdlc-loop`.
+Then work in `my-sdlc-workshop/exercises/02-sdlc-loop`. In a plain clone of this repo, `/pr`
+writes `pr.md` instead, because you can't push to it.
+
+## Step 2: Install the SDLC kit (once)
+
+In the Claude Code you just started:
+
+```text
+/plugin marketplace add haco29/agentic-sdlc
+/plugin install agentic-sdlc@haco29
+```
+
+Restart Claude Code and type `/`: you should see `/spec`, `/plan`, `/build`, `/test`,
+`/review`, `/code-simplify` and `/pr`.
 
 ## Step 3: Make a feature branch
 
 ```bash
 git checkout -b feat/<short-name>      # e.g. feat/percentages
 ```
+
+To see the app you're changing, run `uv run streamlit run app.py` in a second terminal
+(stop it with Ctrl+C).
 
 Every artifact the loop writes goes to `sdlc/<your-branch>/`, so the branch matters. The
 commands refuse to run on `main`.
