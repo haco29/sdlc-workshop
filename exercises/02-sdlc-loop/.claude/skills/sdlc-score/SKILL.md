@@ -95,7 +95,7 @@ Logic leaking into `app.py` is the most common miss. Point at the exact `file:li
 |---|---|
 | 5 | `review.md` exists, every finding has a status, and the fixes are in commits after it. |
 | 4 | A behavior-preserving `refactor:` commit with tests green, or "nothing to simplify" recorded. |
-| 6 | A ready PR whose body carries the gate table and test evidence: 6. A draft PR, or `pr.md` when offline: 4. No PR: 0. |
+| 6 | A ready PR, or a `pr.md` whose gates all pass, with the gate table and test evidence in the body: 6. GitHub is optional, so `pr.md` alone loses nothing. A draft PR, or a `pr.md` with a failing gate: 4. Neither: 0. |
 
 ## Step 3: Report
 
