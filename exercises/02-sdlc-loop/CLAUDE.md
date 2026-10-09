@@ -1,7 +1,7 @@
 # Live Poll: agent instructions
 
 A tiny Streamlit app used to practice the agentic SDLC
-(`/spec → /plan → /build → /test → /review → /code-simplify → /pr`).
+(`/sdlc:spec → /sdlc:plan → /sdlc:build → /sdlc:test → /sdlc:review → /sdlc:code-simplify → /sdlc:pr`).
 
 ## Conventions
 

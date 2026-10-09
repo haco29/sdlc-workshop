@@ -6,7 +6,7 @@ self-contained Python project in its own folder.
 | # | Folder | Module | What you practice |
 |---|---|---|---|
 | 1 | [`exercises/01-agent-basics`](exercises/01-agent-basics) | 1 · Basics | Plain prompts, no skills: watch how an agent reasons, picks tools and checks its own work. |
-| 2 | [`exercises/02-sdlc-loop`](exercises/02-sdlc-loop) | 2 · Agentic SDLC | One small feature through the whole loop, `/spec` to `/pr`, with the [agentic-sdlc](https://github.com/haco29/agentic-sdlc) kit. |
+| 2 | [`exercises/02-sdlc-loop`](exercises/02-sdlc-loop) | 2 · Agentic SDLC | One small feature through the whole loop, `/sdlc:spec` to `/sdlc:pr`, with the [agentic-sdlc](https://github.com/haco29/agentic-sdlc) kit. |
 
 ## Before you start
 

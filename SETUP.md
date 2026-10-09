@@ -119,6 +119,6 @@ separately.
 ## Optional: GitHub
 
 You can do the whole workshop without GitHub: your work stays as commits on your computer,
-and `/pr` writes the pull request description to a file. If you already use GitHub and want
+and `/sdlc:pr` writes the pull request description to a file. If you already use GitHub and want
 a real pull request at the end, also install the [GitHub CLI](https://cli.github.com/) and
 run `gh auth login`. WORKSHOP.md in exercise 2 shows how.

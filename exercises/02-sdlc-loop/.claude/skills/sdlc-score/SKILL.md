@@ -47,20 +47,20 @@ every line.
 
 ### B. Command coverage (15)
 
-2.5 points per line of the coverage checklist in `plan.md` (`/spec` to `/code-simplify`).
+2.5 points per line of the coverage checklist in `plan.md` (`/sdlc:spec` to `/sdlc:code-simplify`).
 A tick is a claim, so look for the evidence:
 
 | Line | Evidence |
 |---|---|
-| `/spec` | an approved, feature-specific `spec.md` |
-| `/plan` | `plan.md` and `todo.md` with real tasks |
-| `/build` | implementation commits, and ticks in `todo.md` |
-| `/test` | tests added in the diff, and a green suite now |
-| `/review` | `review.md` with a status per finding, and fix commits after it |
-| `/code-simplify` | a `refactor:` commit with no test changes, or a recorded "nothing to simplify" |
+| `/sdlc:spec` | an approved, feature-specific `spec.md` |
+| `/sdlc:plan` | `plan.md` and `todo.md` with real tasks |
+| `/sdlc:build` | implementation commits, and ticks in `todo.md` |
+| `/sdlc:test` | tests added in the diff, and a green suite now |
+| `/sdlc:review` | `review.md` with a status per finding, and fix commits after it |
+| `/sdlc:code-simplify` | a `refactor:` commit with no test changes, or a recorded "nothing to simplify" |
 
 - Ticked with evidence: 2.5. Ticked with no evidence: 0, and say which.
-- `skipped: <reason>` with a sensible reason: 1.5. Done but not ticked: 1.5 (the `/pr`
+- `skipped: <reason>` with a sensible reason: 1.5. Done but not ticked: 1.5 (the `/sdlc:pr`
   gate needs the tick).
 - No coverage section at all: score from the evidence alone, at most 7.5.
 
