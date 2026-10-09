@@ -26,7 +26,7 @@ claude plugin list 2>/dev/null | grep -i agentic-sdlc \
 ```
 
 - Found: say so and move on.
-- Not found: show the install commands from WORKSHOP.md step 1. Offer to run
+- Not found: show the install commands from WORKSHOP.md step 2. Offer to run
   `claude plugin marketplace add haco29/agentic-sdlc` and
   `claude plugin install agentic-sdlc@haco29` for them, and only run them on a yes. Remind
   them to restart Claude Code afterwards and to check that `/spec` shows up when they type
