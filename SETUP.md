@@ -14,6 +14,9 @@ You need three tools:
 
 You don't need a GitHub account, an editor or anything else.
 
+On a company laptop or network? Read
+[Company laptops and corporate networks](#company-laptops-and-corporate-networks) first.
+
 ## Windows
 
 Use **PowerShell**: open the Start menu and type `PowerShell`. After each install, **close
@@ -138,8 +141,51 @@ separately.
 | `The token '&&' is not a valid statement separator` | You're in an older PowerShell. Run the commands one at a time, as written above. |
 | `python3` opens the Microsoft Store | You don't need it. Use `uv run …` as shown, and uv brings its own Python. |
 | An installer asks for administrator rights you don't have | Claude Code and uv install without admin rights. For Git, use the portable Git from step 1, or ask IT before the workshop. |
-| A download fails or times out | You may be behind a proxy or firewall. Try another network, or ask IT. |
+| A download fails or times out, or an error mentions a certificate | You may be behind a company proxy or firewall: see [Company laptops and corporate networks](#company-laptops-and-corporate-networks). |
 | `Please tell me who you are` when committing | Run the two `git config` lines above. |
+
+## Company laptops and corporate networks
+
+Company networks often inspect, proxy or block traffic. Find what you see below. Anything
+"from IT" only your IT team can give you, so ask them before the workshop.
+
+To set an environment variable for good, run `setx NAME "value"` in PowerShell, then close
+PowerShell and open it again. On macOS, add `export NAME="value"` to `~/.zshrc` and open a
+new Terminal.
+
+**Errors about a certificate, SSL or TLS.** Your network inspects encrypted traffic with
+its own certificate. Tell each tool to trust it:
+
+- uv: set `UV_SYSTEM_CERTS` to `true`. uv then uses your system's certificate store.
+- Git, on Windows: run `git config --global http.sslBackend schannel`. Git then uses the
+  Windows certificate store.
+- Claude Code uses your system's certificate store already. If it still shows certificate
+  errors, set `NODE_EXTRA_CA_CERTS` to the path of the company CA certificate file, from IT.
+
+**Downloads hang or time out: a proxy.** Set `HTTPS_PROXY` and `HTTP_PROXY` to the proxy
+address from IT, for example `http://proxy.example.com:8080`. Git, uv and Claude Code all
+use them.
+
+**uv can't download packages: PyPI is blocked.** Set `UV_DEFAULT_INDEX` to your company's
+PyPI mirror, with the URL from IT. uv then changes `uv.lock` to point at the mirror. That's
+expected: leave that change out of your commits.
+
+**`git clone` fails: GitHub is blocked.** Ask the facilitator for the two repos as zip
+files, and unzip them into the same folder. Install the SDLC kit from its folder, as in
+step 2 of [WORKSHOP.md](exercises/02-sdlc-loop/WORKSHOP.md). The Git for Windows download
+comes from GitHub too: if it fails, ask IT to install Git.
+
+**Claude Code is already set up by IT**, for example through Amazon Bedrock. Skip the
+Claude Code install and the login. Just check that it answers a prompt, as in
+[Check that everything works](#check-that-everything-works).
+
+**OneDrive.** On many company laptops, OneDrive syncs Documents and Desktop. Clone the
+exercises somewhere it doesn't sync, such as `C:\dev`, before you run the checks:
+
+```powershell
+mkdir C:\dev
+cd C:\dev
+```
 
 ## Optional: GitHub
 
