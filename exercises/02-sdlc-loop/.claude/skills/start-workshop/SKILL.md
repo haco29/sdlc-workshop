@@ -63,7 +63,9 @@ don't touch the app's code.
 ## 4. Feature branch
 
 Ask which feature they'll build (summarize the five in FEATURES.md in one line each, and
-recommend #1 when the room builds the same thing). Then:
+recommend #1 when the room builds the same thing). Run `git status` first: if exercise 1
+left uncommitted changes, offer `git stash` and only run it on a yes, because `/sdlc:build auto`
+needs a clean tree. Then:
 
 ```bash
 git checkout main && git checkout -b feat/<short-name>

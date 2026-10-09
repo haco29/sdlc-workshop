@@ -81,6 +81,9 @@ name so they don't clash with Claude Code's own `/plan` and `/review`.
 
 ## Step 3: Make a feature branch
 
+If `git status` still shows changes from exercise 1, run `git stash` first. `/sdlc:build auto`
+needs a clean working tree.
+
 ```bash
 git checkout -b feat/<short-name>      # e.g. feat/percentages
 ```
