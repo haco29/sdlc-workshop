@@ -14,7 +14,7 @@ self-contained Python project in its own folder.
   uv brings its own Python, and you don't need a GitHub account.
 - **Start Claude Code inside the exercise's folder**, not at the repo root. Exercise 2
   carries its own instructions for the agent. Exercise 1 deliberately has none, and
-  neither does the root.
+  neither does the root. For exercise 1, from the `sdlc-workshop` folder:
 
   ```bash
   cd exercises/01-agent-basics
