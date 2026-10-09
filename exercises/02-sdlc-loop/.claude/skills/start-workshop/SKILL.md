@@ -10,6 +10,12 @@ Get the participant from a fresh clone to their first `/spec` in about ten minut
 brief and friendly. Do one step at a time, and fix problems before moving on. Never commit
 or push in this skill.
 
+## 0. The right folder
+
+Everything in this exercise runs from `exercises/02-sdlc-loop`. Check that `app.py` and
+`FEATURES.md` are in the current directory. If they aren't, tell the participant to quit,
+`cd exercises/02-sdlc-loop`, and start Claude Code again there.
+
 ## 1. The SDLC kit
 
 Check whether the agentic-sdlc commands are installed:
@@ -26,30 +32,30 @@ claude plugin list 2>/dev/null | grep -i agentic-sdlc \
   them to restart Claude Code afterwards and to check that `/spec` shows up when they type
   `/`.
 
-## 2. Their own copy
+## 2. Git
 
 ```bash
-git remote get-url origin 2>/dev/null
+git config user.name; git config user.email
 ```
 
-If `origin` is `haco29/sdlc-workshop` itself and they have `gh`, suggest making their own
-copy from the template (WORKSHOP.md step 2), so `/pr` opens a PR in their repo and not in
-the template. Without GitHub, working locally is fine: `/pr` will write `pr.md` instead.
+Both must print something, or `/build` can't commit. If either is empty, ask for the name
+and email they want on their commits, and run `git config --global user.name "…"` and
+`git config --global user.email "…"` only after they answer.
+
+Working locally is the default: no GitHub account is needed, and `/pr` writes `pr.md`. Only
+if they already use GitHub, have `gh`, and want a real PR, point them to "Optional: a real
+pull request" in WORKSHOP.md.
 
 ## 3. Python and tests
 
 ```bash
-python3 --version          # needs 3.10+
+uv --version
+uv run pytest -q
+uv run ruff check .
 ```
 
-If there's no active virtualenv and no `.venv/`, create one
-(`python3 -m venv .venv && source .venv/bin/activate`). Then:
-
-```bash
-pip install -e ".[dev]"
-pytest -q
-ruff check .
-```
+uv brings its own Python and creates the environment in this folder; never create or
+activate a virtualenv by hand. If `uv` isn't found, send them to SETUP.md at the repo root.
 
 Both must be green before anything changes. If something fails, help fix the environment;
 don't touch the app's code.
@@ -67,7 +73,7 @@ git checkout main && git checkout -b feat/<short-name>
 
 Tell them:
 
-- Run `streamlit run app.py` once, to see the app they're changing.
+- Run `uv run streamlit run app.py` once, to see the app they're changing.
 - Their first command is `/spec <the feature in a sentence>`, and it will grill them. The
   questions are the point.
 - The loop and what to watch for at each step are in WORKSHOP.md step 5.
