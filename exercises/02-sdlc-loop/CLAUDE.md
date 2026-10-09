@@ -18,13 +18,16 @@ A tiny Streamlit app used to practice the agentic SDLC
 Both must pass before every commit:
 
 ```bash
-pytest -q
-ruff check .
+uv run pytest -q
+uv run ruff check .
 ```
+
+Always go through `uv run`: it uses this folder's environment, on Windows and macOS alike.
+Don't create or activate a virtualenv by hand.
 
 ## SDLC
 
-Artifacts live in `sdlc/<branch>/` (spec, plan, todo, review), written by the
+Artifacts live in `sdlc/<branch>/` in this folder (spec, plan, todo, review), written by the
 [agentic-sdlc](https://github.com/haco29/agentic-sdlc) commands. Work on a feature branch,
 never on `main`.
 

@@ -7,15 +7,30 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.10", "3.12"]
+        os: [ubuntu-latest, windows-latest]
+        exercise: [01-agent-basics, 02-sdlc-loop]
+        python-version: ["3.12"]
+        include:
+          - os: ubuntu-latest
+            exercise: 01-agent-basics
+            python-version: "3.10"
+          - os: ubuntu-latest
+            exercise: 02-sdlc-loop
+            python-version: "3.10"
+    defaults:
+      run:
+        working-directory: exercises/${{ matrix.exercise }}
+    env:
+      UV_PYTHON: ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -e ".[dev]"
-      - run: ruff check .
-      - run: pytest -q
+      - run: pip install uv
+      - run: uv run --locked ruff check .
+      - run: uv run --locked pytest -q

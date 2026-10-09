@@ -1,52 +1,40 @@
-# 🗳️ Live Poll: SDLC workshop starter
+# Agentic engineering workshop: exercises
 
-A tiny Streamlit app: create a poll, vote, and watch the results. It exists so a whole
-room, backend, frontend and QA alike, can practice the same agentic SDLC end to end by
-adding one small feature:
+Hands-on exercises for the agentic engineering workshop. Each exercise is a small,
+self-contained Python project in its own folder.
 
-```text
-/spec  →  /plan  →  /build  →  /test  →  /review  →  /code-simplify  →  /pr
-```
+| # | Folder | Module | What you practice |
+|---|---|---|---|
+| 1 | [`exercises/01-agent-basics`](exercises/01-agent-basics) | 1 · Basics | Plain prompts, no skills: watch how an agent reasons, picks tools and checks its own work. |
+| 2 | [`exercises/02-sdlc-loop`](exercises/02-sdlc-loop) | 2 · Agentic SDLC | One small feature through the whole loop, `/spec` to `/pr`, with the [agentic-sdlc](https://github.com/haco29/agentic-sdlc) kit. |
 
-> **Running the workshop?** Read [WORKSHOP.md](WORKSHOP.md), or open the repo in Claude Code
-> and run **`/start-workshop`**. The features to build are in [FEATURES.md](FEATURES.md).
-> When you're done, **`/sdlc-score`** grades how closely you followed the loop.
+## Before you start
 
-The commands come from the [agentic-sdlc](https://github.com/haco29/agentic-sdlc) plugin.
+- **Set up first: [SETUP.md](SETUP.md).** Git, uv and Claude Code, on Windows or macOS.
+  uv brings its own Python, and you don't need a GitHub account.
+- **Start Claude Code inside the exercise's folder**, not at the repo root. Each exercise
+  carries its own instructions for the agent, and the root deliberately has none.
 
-## Quick start
+  ```bash
+  cd exercises/01-agent-basics
+  claude
+  ```
 
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-pytest -q                 # should be green
-streamlit run app.py      # opens the poll in your browser
-```
+- **Exercise 1 runs without the SDLC kit.** If you're doing both, do exercise 1 first and
+  install the kit only when exercise 2 tells you to.
 
-Votes are stored in a local `poll.json`. **Reset poll** starts over.
-
-## Layout
-
-```text
-app.py               Streamlit view. Thin: load state, call poll.core, render.
-poll/core.py         Pure poll logic: create, vote, tally. No I/O.
-poll/store.py        Load and save poll.json. The only module that touches the disk.
-tests/test_core.py   Tests for the logic: your TDD template.
-tests/test_store.py  Tests for saving and loading.
-tests/test_app.py    A smoke test that the UI is wired to the logic.
-CLAUDE.md            The conventions the agent follows in this repo.
-```
-
-**The important idea:** a feature's logic goes in `poll/core.py` as plain functions over
-plain data. That's what makes it testable. Test it with `pytest`, then wire it into
-`app.py`.
+The steps for exercise 1 are on the facilitator's slides. Exercise 2 has its own
+playbook: [WORKSHOP.md](exercises/02-sdlc-loop/WORKSHOP.md).
 
 ## Checks
 
 ```bash
-pytest -q
-ruff check .
+cd exercises/<exercise>
+uv run pytest -q
+uv run ruff check .
 ```
+
+Dummy data only, in every exercise.
 
 ## License
 

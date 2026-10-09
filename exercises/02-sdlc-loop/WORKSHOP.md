@@ -10,15 +10,15 @@ to **run the whole loop once, for real**, and to read what every step produces:
 It doesn't matter whether you're backend, frontend or QA: everyone runs the same loop on
 the same app.
 
-> **Shortcut:** open this repo in Claude Code and run **`/start-workshop`**. It checks your
-> setup, makes your branch, and points you at a feature.
+> **Shortcut:** start Claude Code in this folder (`exercises/02-sdlc-loop`) and run
+> **`/start-workshop`**. It checks your setup, makes your branch, and points you at a feature.
 
 ## You need
 
-- Python 3.10 or newer, and git
-- Claude Code (recommended) or Cursor
-- A GitHub account and the `gh` CLI, if you want a real pull request at the end. Without
-  them, `/pr` writes the PR description to a file instead.
+- Git, uv and Claude Code, set up as in [SETUP.md](../../SETUP.md). uv brings its own
+  Python, so you don't need to install it.
+- No GitHub account. `/pr` writes the PR description to a file instead. If you already use
+  GitHub and want a real pull request, see "Optional: a real pull request" below.
 
 ## Step 1: Install the SDLC kit (once)
 
@@ -35,29 +35,33 @@ Restart Claude Code and type `/`: you should see `/spec`, `/plan`, `/build`, `/t
 Using Cursor? Clone [agentic-sdlc](https://github.com/haco29/agentic-sdlc) and run
 `scripts/install.sh --cursor`, then restart Cursor.
 
-## Step 2: Get your own copy of the app
+## Step 2: Open the app
 
-With GitHub, make your own repository from this template, so your PR lands in your repo:
+You cloned this repo during setup. Go to this exercise's folder:
+
+```bash
+cd sdlc-workshop/exercises/02-sdlc-loop
+```
+
+Everything from here on runs in `exercises/02-sdlc-loop`, and that's where you start Claude
+Code: the agent's instructions for this app and `/start-workshop` live in this folder, and
+the loop writes its artifacts to `sdlc/<branch>/` here. Then, one at a time:
+
+```bash
+uv run pytest -q              # green before you change anything
+uv run streamlit run app.py   # create a poll, vote, get a feel for it
+```
+
+### Optional: a real pull request
+
+Only if you already use GitHub and have the `gh` CLI. Make your own repository from this
+template instead of the plain clone, so your PR lands in your repo:
 
 ```bash
 gh repo create my-sdlc-workshop --template haco29/sdlc-workshop --private --clone
-cd my-sdlc-workshop
 ```
 
-Without GitHub, just clone it and work locally:
-
-```bash
-git clone https://github.com/haco29/sdlc-workshop.git && cd sdlc-workshop
-```
-
-Then:
-
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-pytest -q                 # green before you change anything
-streamlit run app.py      # create a poll, vote, get a feel for it
-```
+Then work in `my-sdlc-workshop/exercises/02-sdlc-loop`.
 
 ## Step 3: Make a feature branch
 
