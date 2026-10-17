@@ -59,3 +59,4 @@ Core API:
 - 2026-10-17 · /sdlc:test gap pass · `uv run pytest -q && uv run ruff check .` → 30 passed, lint clean
 - 2026-10-17 · review fixes 1, 2, 6 · `uv run pytest -q && uv run ruff check .` → 31 passed, lint clean
 - 2026-10-17 · /sdlc:code-simplify · `uv run pytest -q && uv run ruff check .` → 31 passed, lint clean; no changes
+- 2026-10-17 · /sdlc:pr gate check · `uv run pytest -q && uv run ruff check .` → 31 passed, lint clean
