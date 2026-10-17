@@ -43,3 +43,22 @@ def tally(poll: Poll) -> list[tuple[str, int]]:
 
 def total_votes(poll: Poll) -> int:
     return sum(poll["votes"].values())
+
+
+def shares(poll: Poll) -> list[tuple[str, float]]:
+    """Each option's percent of all votes (2 decimals), in creation order. All 0 with no votes."""
+    total = total_votes(poll)
+    return [
+        (option, round(count / total * 100, 2) if total else 0.0) for option, count in tally(poll)
+    ]
+
+
+def format_share(percent: float) -> str:
+    """Label for a share, without trailing zeros: 50%, 12.5%, 33.33%."""
+    return f"{percent:g}%"
+
+
+def leaders(poll: Poll) -> list[str]:
+    """Options tied for the most votes, in creation order. Empty when nobody has voted."""
+    top = max(poll["votes"].values())
+    return [option for option, count in tally(poll) if top and count == top]

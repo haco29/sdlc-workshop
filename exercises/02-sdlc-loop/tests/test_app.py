@@ -3,6 +3,7 @@ that the UI is wired to it."""
 
 from pathlib import Path
 
+import pyarrow as pa
 import pytest
 from streamlit.testing.v1 import AppTest
 
@@ -43,3 +44,34 @@ def test_invalid_poll_shows_an_error():
 
     assert "two options" in app.error[0].value
     assert store.load() is None
+
+
+def test_results_chart_labels_each_bar_with_its_share_and_marks_the_leader():
+    store.save(
+        {"question": "Lunch?", "options": ["Pizza", "Sushi"], "votes": {"Pizza": 0, "Sushi": 2}}
+    )
+    app = run_app()
+
+    data = app.get("vega_lite_chart")[0].proto.datasets[0].data.data
+    rows = pa.ipc.open_stream(data).read_pandas().to_dict("records")
+
+    assert [(r["Option"], r["Share"], r["Leader"]) for r in rows] == [
+        ("Pizza", "0%", ""),
+        ("Sushi", "100%", "🏆"),
+    ]
+
+
+def test_results_chart_marks_every_tied_leader():
+    store.save(
+        {
+            "question": "Lunch?",
+            "options": ["Pizza", "Sushi", "Salad"],
+            "votes": {"Pizza": 2, "Sushi": 2, "Salad": 0},
+        }
+    )
+    app = run_app()
+
+    data = app.get("vega_lite_chart")[0].proto.datasets[0].data.data
+    rows = pa.ipc.open_stream(data).read_pandas().to_dict("records")
+
+    assert [r["Leader"] for r in rows] == ["🏆", "🏆", ""]

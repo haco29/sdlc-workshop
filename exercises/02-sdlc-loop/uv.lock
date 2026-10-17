@@ -1533,7 +1533,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pandas", specifier = ">=2.0" },
-    { name = "streamlit", specifier = ">=1.30" },
+    { name = "streamlit", specifier = ">=1.46" },
 ]
 
 [package.metadata.requires-dev]
