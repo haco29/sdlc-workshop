@@ -8,9 +8,8 @@ adding one small feature:
 /sdlc:spec  →  /sdlc:plan  →  /sdlc:build  →  /sdlc:test  →  /sdlc:review  →  /sdlc:code-simplify  →  /sdlc:pr
 ```
 
-> **Running the workshop?** Read [WORKSHOP.md](WORKSHOP.md), or start Claude Code in this
-> folder and run **`/start-workshop`**. The features to build are in [FEATURES.md](FEATURES.md).
-> When you're done, **`/sdlc-score`** grades how closely you followed the loop.
+> **Running the workshop?** Read [WORKSHOP.md](WORKSHOP.md). The features to build are in
+> [FEATURES.md](FEATURES.md).
 
 The commands come from the [agentic-sdlc](https://github.com/haco29/agentic-sdlc) plugin.
 

@@ -10,9 +10,6 @@ to **run the whole loop once, for real**, and to read what every step produces:
 It doesn't matter whether you're backend, frontend or QA: everyone runs the same loop on
 the same app.
 
-> **Shortcut:** start Claude Code in this folder (`exercises/02-sdlc-loop`) and run
-> **`/start-workshop`**. It checks your setup, makes your branch, and points you at a feature.
-
 ## You need
 
 - Git, uv, Claude Code and the GitHub CLI, set up as in [SETUP.md](../../SETUP.md). uv brings
@@ -38,8 +35,8 @@ Cloned the original instead of forking? Run `gh repo fork --remote` here: it kee
 folder and commits and points `origin` at your fork, so `/sdlc:pr` can open a pull request.
 
 Everything from here on runs in `exercises/02-sdlc-loop`, and that's where you start Claude
-Code: the agent's instructions for this app and `/start-workshop` live in this folder, and
-the loop writes its artifacts to `sdlc/<branch>/` here.
+Code: the agent's instructions for this app live in this folder, and the loop writes its
+artifacts to `sdlc/<branch>/` here.
 
 ```bash
 claude
@@ -99,18 +96,8 @@ Read what each command produces before you run the next one.
 | `/sdlc:code-simplify` | A `refactor:` commit | Tests stay green the whole time. "Nothing to simplify" is a fine answer. |
 | `/sdlc:pr` | A PR, or `pr.md` | It checks six gates first. A failing gate means a draft, not a ready PR. |
 
-## Step 6: Score yourself
+## Step 6: Debrief
 
-```text
-/sdlc-score
-```
-
-It reads your artifacts, commits, tests and PR, and grades **how you worked** out of 100,
-with the three things to do differently next time. Not how clever the feature is.
-
-## Step 7: Debrief
-
-- What did `/sdlc-score` take points off for?
 - Where did the `/sdlc:spec` grilling change what you were going to build?
 - Which `/sdlc:review` axis found the most?
 - Same feature, different roles: how did your specs and tests differ?
